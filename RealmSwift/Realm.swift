@@ -153,8 +153,8 @@ public final class Realm {
 
      - throws: An `NSError` if the transaction could not be written.
      */
-    public func commitWrite() throws {
-        try rlmRealm.commitWriteTransaction()
+    public func commitWrite(withoutNotifying tokens: [NotificationToken] = []) throws {
+        try rlmRealm.commitWriteTransactionWithoutNotifying(tokens)
     }
 
     /**
@@ -756,9 +756,9 @@ public final class Realm {
      until the current write transaction completes.
 
      Before beginning the write transaction, `beginWrite` updates the
-     `Realm` instance to the latest Realm version, as if `refresh()` had been called, and
-     generates notifications if applicable. This has no effect if the Realm
-     was already up to date.
+     `Realm` instance to the latest Realm version, as if `refresh()` had been
+     called, and generates notifications if applicable. This has no effect if
+     the Realm was already up to date.
 
      It is rarely a good idea to have write transactions span multiple cycles of
      the run loop, but if you do wish to do so you will need to ensure that the
@@ -776,8 +776,8 @@ public final class Realm {
 
      - throws: An `NSError` if the transaction could not be written.
      */
-    public func commitWrite() throws {
-        try rlmRealm.commitWriteTransaction()
+    public func commitWrite(withoutNotifying tokens: [NotificationToken] = []) throws {
+        try rlmRealm.commitWriteTransactionWithoutNotifying(tokens)
     }
 
     /**
